@@ -1,0 +1,6 @@
+Backup de la base de datos el 10/10/22
+Este contiene:
+* La base de datos creada
+* La tabla usuario
+* El diagrama
+* Los procedimientos almacenados de la tabla usuario, para insertar, modificar, eliminar, seleccionar todos y seleccionar por ID
