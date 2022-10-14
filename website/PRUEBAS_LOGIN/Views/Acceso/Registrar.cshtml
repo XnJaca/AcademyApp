@@ -1,0 +1,87 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcademicAPP</title>
+  
+    <link href="~/Content/css/Styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+
+        <div class="img">
+            <img src="~/images/4.png" alt="BG">
+        </div>
+
+        <div class="login-content">
+
+            <form action="@Url.Action("Registrar","Acceso")" method="post">
+
+                <div class="title-container">
+                    <h1>Login</h1>
+                    <h2>Hello, Friends!</h2>
+                    <p>Enter your personal detail and start journey with us.</p>
+                </div>
+
+
+                <div class="login-inner-content">
+
+
+                    <div class="input-div one">
+                        <div class="i">
+                            <i class="fas fa-regular fa-envelope"></i>
+                        </div>
+                        <div class="div">
+                            <h5>Correo</h5>
+                            <input name="Correo" type="text" class="input">
+                        </div>
+                    </div>
+
+                    <div class="input-div pass">
+                        <div class="i">
+                            <i class="fas fa-eye" onclick="show()"></i>
+                        </div>
+                        <div class="div">
+                            <h5>Contraseña</h5>
+                            <input id="pswrd" type="password" name="Clave" class="input">
+                        </div>
+                    </div>
+
+                    <div class="input-div pass">
+                        <div class="i">
+                            <i class="fas fa-eye" onclick="show()"></i>
+                        </div>
+                        <div class="div">
+                            <h5>Confirmar Contraseña</h5>
+                            <input id="pswrd" type="password" name="ConfirmarClave" class="input">
+                        </div>
+                    </div>
+
+
+                    @if (ViewData["Mensaje"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ViewData["Mensaje"]
+                        </div>
+                    }
+                </div>
+
+                <button type="submit" name="button" class="btn">Registrarse</button>
+
+                <h5>¿Ya tienes una cuenta? <a href="@Url.Action("Login","Acceso")">Iniciar Sesión</a></h5>
+
+            </form>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/loginComplementos")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/complementos")
+</body>
+</html>

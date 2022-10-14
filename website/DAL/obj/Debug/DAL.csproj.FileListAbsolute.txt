@@ -1,0 +1,9 @@
+C:\Users\ramir\OneDrive\Escritorio\PRUEBAS_LOGIN\DAL\bin\Debug\DAL.dll
+C:\Users\ramir\OneDrive\Escritorio\PRUEBAS_LOGIN\DAL\bin\Debug\DAL.pdb
+C:\Users\ramir\OneDrive\Escritorio\PRUEBAS_LOGIN\DAL\bin\Debug\Entities.dll
+C:\Users\ramir\OneDrive\Escritorio\PRUEBAS_LOGIN\DAL\bin\Debug\Entities.pdb
+C:\Users\ramir\OneDrive\Escritorio\PRUEBAS_LOGIN\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\ramir\OneDrive\Escritorio\PRUEBAS_LOGIN\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\ramir\OneDrive\Escritorio\PRUEBAS_LOGIN\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\ramir\OneDrive\Escritorio\PRUEBAS_LOGIN\DAL\obj\Debug\DAL.dll
+C:\Users\ramir\OneDrive\Escritorio\PRUEBAS_LOGIN\DAL\obj\Debug\DAL.pdb
