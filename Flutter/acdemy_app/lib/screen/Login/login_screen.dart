@@ -205,7 +205,13 @@ class _BuildBtnLogin extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: sButton,
-        onPressed: () => print("Login button pressed"),
+        onPressed: () => {
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const DashBoardScreen(),
+              ))
+        },
         child: const Text(
           'Ingresar',
           style: TextStyle(
