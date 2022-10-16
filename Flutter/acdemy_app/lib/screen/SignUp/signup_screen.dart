@@ -137,28 +137,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 }
 
-class BuildSigInWithText extends StatelessWidget {
-  const BuildSigInWithText({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        GestureDetector(
-          onTap: () => Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (_) => const LoginScreen())),
-          child: const Text(
-            '- Ya tengo una Cuenta -',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 class _BuildBtnLogin extends StatelessWidget {
   const _BuildBtnLogin({
     Key? key,

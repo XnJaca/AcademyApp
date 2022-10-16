@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../utilities/constants.dart';
+
 class BuildSigInWithText extends StatelessWidget {
   const BuildSigInWithText({
     Key? key,
