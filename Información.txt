@@ -1,0 +1,2 @@
+En este avance se creo un API sencillo el cual a la hora de usar sus metodos llama a una clase para el manejo
+de datos, está clase se encarga de hacer la conexion con la base datos, para tratar los datos según sean necesarios.
