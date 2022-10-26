@@ -1,4 +1,7 @@
 ﻿using ApiAcademyApp.Models;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -11,8 +14,9 @@ namespace ApiAcademyApp.DAO
         //datos para así unicamenete tener que enviar los parametros u recibir la información haciendo uso unico del
         //procedimiento almacenado.
 
-        public static dynamic Save(Usuario oUsuario)
+        public static dynamic Save(Usuario oUsuario, out string message, out int register)
         {
+
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
                 SqlCommand cmd = new SqlCommand("PA_InsertarUsuario", oConexion);
@@ -24,11 +28,16 @@ namespace ApiAcademyApp.DAO
                 cmd.Parameters.AddWithValue("@Telefono", oUsuario.Phone);
                 cmd.Parameters.AddWithValue("@Email", oUsuario.Email);
                 cmd.Parameters.AddWithValue("@Contrasenna", oUsuario.Password);
+                cmd.Parameters.Add("Registrado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
 
+                oConexion.Open();
+                cmd.ExecuteNonQuery();
+
+                register = Convert.ToInt32(cmd.Parameters["Registrado"].Value);
+                message = cmd.Parameters["Mensaje"].Value.ToString();
                 try
                 {
-                    oConexion.Open();
-                    cmd.ExecuteNonQuery();
                     return new
                     {
                         success = true,
@@ -38,6 +47,7 @@ namespace ApiAcademyApp.DAO
                 }
                 catch (Exception ex)
                 {
+
                     return new
                     {
                         success = false,
@@ -48,11 +58,31 @@ namespace ApiAcademyApp.DAO
             }
         }
 
+        public static void Login(Usuario user, out string mensaje, out int idGenerado)
+        {
+            using (SqlConnection cn = new SqlConnection(Conexion.rutaConexion))
+            {
+                SqlCommand cmd = new SqlCommand("PA_ValidarUsuario", cn);
+                cmd.Parameters.AddWithValue("Email", user.Email);
+                cmd.Parameters.AddWithValue("Contrasenna", user.Password);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
+
+                cn.Open();
+                cmd.ExecuteNonQuery();
+
+                idGenerado = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+            }
+        }
+
         public static dynamic Edit(Usuario oUsuario)
         {
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("PA_ModificarUsuario", oConexion);
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("PA_ModificarUsuario", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@ID", oUsuario.Id);
                 cmd.Parameters.AddWithValue("@Nombre", oUsuario.Name);
@@ -62,27 +92,31 @@ namespace ApiAcademyApp.DAO
                 cmd.Parameters.AddWithValue("@Email", oUsuario.Email);
                 cmd.Parameters.AddWithValue("@Contrasenna", oUsuario.Password);
 
-                try
-                {
+
                     oConexion.Open();
                     cmd.ExecuteNonQuery();
                     return new
                     {
                         success = true,
-                        message = "Se produjo un error al intentar guardar el usuario.",
+                        message = "Usuario editado correctamente :)",
                         result = oUsuario
                     };
                 }
                 catch (Exception ex)
                 {
-                    return false;
+                    return new
+                    {
+                        success = false,
+                        message = "Error al editar el usuario: " + ex.Message,
+                        result = oUsuario,
+                    };
                 }
             }
         }
 
-        public static List<Usuario> GetAll()
+        public static dynamic GetAll()
         {
-            List<Usuario> oListaUsuario = new List<Usuario>();
+            List<Usuario> oListaUsuario = null;
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
                 SqlCommand cmd = new SqlCommand("PA_SeleccionarUsuarios", oConexion);
@@ -98,9 +132,10 @@ namespace ApiAcademyApp.DAO
 
                         while (dr.Read())
                         {
+                             oListaUsuario = new List<Usuario>();
                             oListaUsuario.Add(new Usuario()
                             {
-                                Id = Convert.ToInt32(dr["ID"]),
+                                Id = Convert.ToInt32(dr["Id"]),
                                 Name = dr["Nombre"].ToString(),
                                 LastName = dr["Apellido_1"].ToString(),
                                 SecondLastName = dr["Apellido_2"].ToString(),
@@ -112,18 +147,30 @@ namespace ApiAcademyApp.DAO
 
                     }
 
+                    //return new JsonResult(oListaUsuario);
+                    return new
+                    {
+                        //success = true,
+                        //message = "Lista de todos los usuarios: ",
 
+                        result = oListaUsuario,
+                        //result = new JsonResult(oListaUsuario),
 
-                    return oListaUsuario;
+                    };
                 }
                 catch (Exception ex)
                 {
-                    return oListaUsuario;
+                    return new
+                    {
+                        success = false,
+                        message = "Error al obtener los usuarios: " + ex.Message,
+                        result = oListaUsuario,
+                    };
                 }
             }
         }
 
-        public static Usuario GetById(int idUsuario)
+        public static dynamic GetById(int idUsuario)
         {
             Usuario oUsuario = null;
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
@@ -144,7 +191,7 @@ namespace ApiAcademyApp.DAO
                         {
                             oUsuario = new Usuario()
                             {
-                                Id = Convert.ToInt32(dr["ID"]),
+                                Id = Convert.ToInt32(dr["Id"]),
                                 Name = dr["Nombre"].ToString(),
                                 LastName = dr["Apellido_1"].ToString(),
                                 SecondLastName = dr["Apellido_2"].ToString(),
@@ -155,35 +202,56 @@ namespace ApiAcademyApp.DAO
                         }
 
                     }
-
-                    return oUsuario;
+                    return new
+                    {
+                        //success = true,
+                        //message = "Usuario obtenido correctamente :)",
+                        result = oUsuario,
+                    };
                 }
                 catch (Exception ex)
                 {
-                    return oUsuario;
+                    return new
+                    {
+                        success = false,
+                        message = "Error al obtener el usuario: " + ex.Message,
+                        result = oUsuario,
+                    };
                 }
             }
         }
 
-        public static dynamic Delete(int id)
+        public static dynamic Delete(Usuario usu)
         {
-            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
-            {
-                SqlCommand cmd = new SqlCommand("PA_EliminarUsuario", oConexion);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", id);
 
-                try
+            try
+            {
+                using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
                 {
+                    SqlCommand cmd = new SqlCommand("PA_EliminarUsuario", oConexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", usu.Id);
+
                     oConexion.Open();
                     cmd.ExecuteNonQuery();
-                    return true;
                 }
-                catch (Exception ex)
+                return new
                 {
-                    return false;
-                }
+                    success = true,
+                    message = "Usuario eliminado correctamente :)",
+                    result = "El usuario fue eliminado no hay acceso a sus datos"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new
+                {
+                    success = false,
+                    message = "Error al eliminar el usuario: " + ex.Message,
+                    result = "El usuario no se pudo eliminar"
+                };
             }
         }
+        }
     }
-}
+

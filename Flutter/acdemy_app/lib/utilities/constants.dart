@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+// COLORS
+
+const kPrimaryColor = Color(0xff6849ef);
+const kPrimaryLight = Color(0xff8a72f1);
+
+// SIZE
+const kBottomNavigationBarItemSize = 24.0;
+const kCategoryCardImageSize = 120.0;
+
+
 const kHintTextStyle = TextStyle(
   color: Colors.white54,
   fontFamily: 'OpenSans',

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sebastian\\Desktop\\AcademyAppCommits\\AcademyAppMio\\ApiAcademyApp\\ApiAcademyApp\\ApiAcademyApp.csproj": {}
+    "C:\\Users\\Jaca\\Desktop\\Proyectos\\AcademyApp\\ApiAcademyApp\\ApiAcademyApp\\ApiAcademyApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sebastian\\Desktop\\AcademyAppCommits\\AcademyAppMio\\ApiAcademyApp\\ApiAcademyApp\\ApiAcademyApp.csproj": {
+    "C:\\Users\\Jaca\\Desktop\\Proyectos\\AcademyApp\\ApiAcademyApp\\ApiAcademyApp\\ApiAcademyApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sebastian\\Desktop\\AcademyAppCommits\\AcademyAppMio\\ApiAcademyApp\\ApiAcademyApp\\ApiAcademyApp.csproj",
+        "projectUniqueName": "C:\\Users\\Jaca\\Desktop\\Proyectos\\AcademyApp\\ApiAcademyApp\\ApiAcademyApp\\ApiAcademyApp.csproj",
         "projectName": "ApiAcademyApp",
-        "projectPath": "C:\\Users\\Sebastian\\Desktop\\AcademyAppCommits\\AcademyAppMio\\ApiAcademyApp\\ApiAcademyApp\\ApiAcademyApp.csproj",
-        "packagesPath": "C:\\Users\\Sebastian\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sebastian\\Desktop\\AcademyAppCommits\\AcademyAppMio\\ApiAcademyApp\\ApiAcademyApp\\obj\\",
+        "projectPath": "C:\\Users\\Jaca\\Desktop\\Proyectos\\AcademyApp\\ApiAcademyApp\\ApiAcademyApp\\ApiAcademyApp.csproj",
+        "packagesPath": "C:\\Users\\Jaca\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jaca\\Desktop\\Proyectos\\AcademyApp\\ApiAcademyApp\\ApiAcademyApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Sebastian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jaca\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,9 +40,17 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "System.Collections": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

@@ -1,5 +1,7 @@
-import 'package:acdemy/router/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:acdemy/constants/constants.dart';
+import 'package:acdemy/router/app_routes.dart';
+
 
 void main() => runApp(const MyApp());
 
@@ -11,7 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Acdemy',
-      theme: ThemeData(fontFamily: 'cobbler-sans'),
+      theme: ThemeData(
+        primaryColor: kPrimaryColor,
+        scaffoldBackgroundColor: Colors.white,
+        fontFamily: 'cobbler-sans',
+      ),
       initialRoute: AppRoutes.initialRoute,
       routes: AppRoutes.getAppRoutes(),
       onGenerateRoute: AppRoutes.onGenerateRoute,

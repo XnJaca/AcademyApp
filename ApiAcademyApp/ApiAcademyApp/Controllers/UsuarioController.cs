@@ -3,6 +3,9 @@ using ApiAcademyApp.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Microsoft.SqlServer.Server;
+using Newtonsoft.Json;
+using System.Runtime.CompilerServices;
 
 namespace ApiAcademyApp.Controllers
 {
@@ -34,17 +37,32 @@ namespace ApiAcademyApp.Controllers
 
                 if (token != "123456" )
                 {
-                    return new
+                    dynamic obj = new
                     {
                         success = true,
                         message = "token incorrecto",
                         result = "empty"
                     };
+                return new JsonResult(obj);
+            }
+            else
+            {
+                dynamic query = UsuarioDAO.GetAll();
+                if (query.result == null)
+                {
+                    dynamic obj = new
+                    {
+                        success = true,
+                        message = "No existen usuarios registrados",
+                        result = "empty"
+                    };
+                    return new JsonResult(obj);
                 }
-                else 
-                { 
-                    return UsuarioDAO.GetAll();
+                else
+                {
+                    return new JsonResult(query);
                 }
+            }
         }
 
         
@@ -60,26 +78,28 @@ namespace ApiAcademyApp.Controllers
             {
                 return new
                 {
-                    success = true,
+                    success = false,
                     message = "token incorrecto",
                     result = "empty"
                 };
             }
             else
             {
-                Usuario oUsu = UsuarioDAO.GetById(id);
+                dynamic query = UsuarioDAO.GetById(id);
+                Usuario oUsu = (Usuario)query.result;
                 if (oUsu == null)
                 {
-                    return new
+                    dynamic obj = new
                     {
-                        success = true,
-                        message = "No existe ningun usuario con ese ID",
+                        success = false,
+                        message = "No existen usuarios con ese id",
                         result = "empty"
                     };
+                    return new JsonResult(obj);
                 }
                 else
                 {
-                    return oUsu;
+                    return new JsonResult(query);
                 }
             }
             
@@ -104,25 +124,16 @@ namespace ApiAcademyApp.Controllers
             }
             else
             {
-                dynamic oUsuario = UsuarioDAO.Save(usuario);
-                if (oUsuario.success == true)
+                dynamic query = UsuarioDAO.Save(usuario, out string message, out int register);
+                return new
                 {
-                    return new
-                    {
-                        success = oUsuario.success,
-                        message = oUsuario.message,
-                        result = oUsuario.result.Id
-                    };
-                }
-                else
-                {
-                    return new
-                    {
-                        success = oUsuario.success,
-                        message = oUsuario.message,
-                        result = oUsuario.result
-                    };
-                }
+                    success = query.success,
+                    message = query.message,
+                    result = query.result,
+                    register = register,
+                    messageOut = message
+                };
+                
             }
         }
 
@@ -151,7 +162,8 @@ namespace ApiAcademyApp.Controllers
             }
             else
             {
-                return UsuarioDAO.Delete(usu.Id);
+                dynamic query = UsuarioDAO.Delete(usu);
+                return query;
             }
 
         }
@@ -176,10 +188,40 @@ namespace ApiAcademyApp.Controllers
             }
             else
             {
-                return UsuarioDAO.Edit(usuario);
+                dynamic query = UsuarioDAO.Edit(usuario);
+                return query;
             }
         }
 
+        [HttpPost]
+        [Route("login")]
+        ////Este metodo llama al metodo "Registrar" de la clase UsuarioDAO e inserta un nuevo usuario
+        public dynamic Login(Usuario usuario)
+        {
+            int idGenerado;
+            string mensaje;
+            string token = Request.Headers.Where(x => x.Key == "Authorization").FirstOrDefault().Value;
 
+            if (token != "123456")
+            {
+                return new
+                {
+                    success = false,
+                    message = "token incorrecto",
+                    result = "empty"
+                };
+            }
+            else
+            {
+                UsuarioDAO.Login(usuario, out mensaje, out idGenerado);
+                return new
+                {
+                    success = true,
+                    message = mensaje,
+                    result = idGenerado
+                };
+
+            }
+        }
     }
 }

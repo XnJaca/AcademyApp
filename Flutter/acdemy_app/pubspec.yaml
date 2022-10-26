@@ -36,6 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.5
   provider: ^6.0.4
+  rive: ^0.9.0
+  quickalert: ^1.0.0
+  one_context: ^2.1.0
+  cool_alert: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +66,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/Logo/
+    - assets/Riv/
+    - assets/img/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
