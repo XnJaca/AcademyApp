@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA61L9iDH99kyDCvGLmgLneQAAAAACAAAAAAAQZgAAAAEAACAAAADrlu5JNZHP8Q3Z6QsWuWL1mkhEN+1uIhW7g7NUDf6SiAAAAAAOgAAAAAIAACAAAAD807AWdTqZNKSHL9zgASdkMySTZ4xjDpLy0X2BjqbdnSAAAAAGIz+JU3WaaYhtdXBNoP0wW8PV91CCZbd0i16j/7UIi0AAAAAv7P6M0oiO0eEAn7gCrgoAAMdSh0Dk3makOXABUWNsjeFZQ9XwhGmxm11aoCSE6PciHSuy4OCYX5Y6AN/8X3wa</EncryptedPassword>
+    <_PublishTargetUrl>ftp://acedmyc.somee.com/www.acedmyc.somee.com</_PublishTargetUrl>
+    <History>True|2022-10-27T20:24:00.6500880Z;False|2022-10-27T14:23:20.9956455-06:00;True|2022-10-27T13:05:56.6643616-06:00;False|2022-10-27T13:05:22.1651333-06:00;True|2022-10-23T00:25:14.7636854-06:00;False|2022-10-23T00:24:34.7690259-06:00;True|2022-10-23T00:18:58.5023246-06:00;False|2022-10-23T00:18:21.8497510-06:00;True|2022-10-22T18:53:55.3125236-06:00;False|2022-10-22T18:52:43.4533874-06:00;False|2022-10-22T18:52:16.8879675-06:00;True|2022-10-22T18:50:39.2938693-06:00;False|2022-10-22T18:50:09.5705754-06:00;True|2022-10-22T18:36:32.3628130-06:00;False|2022-10-22T18:36:07.7619592-06:00;True|2022-10-22T18:30:36.2671883-06:00;False|2022-10-22T18:30:06.0846055-06:00;True|2022-10-22T15:33:40.7413274-06:00;False|2022-10-22T15:33:03.5121401-06:00;True|2022-10-22T15:30:58.2037929-06:00;False|2022-10-22T15:30:24.6145188-06:00;False|2022-10-22T15:29:56.8333814-06:00;True|2022-10-22T15:28:00.7546253-06:00;False|2022-10-22T15:27:22.6047274-06:00;False|2022-10-22T15:26:53.1557114-06:00;False|2022-10-22T15:26:20.2699825-06:00;True|2022-10-22T15:25:15.9486170-06:00;False|2022-10-22T15:24:30.4890972-06:00;True|2022-10-22T15:08:12.3272611-06:00;False|2022-10-22T15:07:22.9642521-06:00;True|2022-10-22T15:04:58.9171421-06:00;False|2022-10-22T15:04:11.5127972-06:00;True|2022-10-22T15:00:45.2275199-06:00;False|2022-10-22T15:00:09.3352117-06:00;False|2022-10-22T14:59:33.6639417-06:00;False|2022-10-22T14:58:58.1273334-06:00;True|2022-10-22T14:45:12.9780538-06:00;False|2022-10-22T14:44:44.1157558-06:00;False|2022-10-22T14:43:59.6563318-06:00;True|2022-10-22T14:41:59.4500505-06:00;False|2022-10-22T14:41:30.8553965-06:00;False|2022-10-22T14:41:05.1486121-06:00;True|2022-10-22T14:39:10.8221389-06:00;False|2022-10-22T14:38:41.5273724-06:00;True|2022-10-22T14:36:25.0423654-06:00;False|2022-10-22T14:35:19.9741014-06:00;True|2022-10-22T14:28:22.1500145-06:00;False|2022-10-22T14:27:55.8195072-06:00;True|2022-10-22T13:25:29.8834497-06:00;False|2022-10-22T13:24:28.3280286-06:00;False|2022-10-22T13:23:43.5309082-06:00;False|2022-10-22T13:23:36.7560753-06:00;True|2022-10-22T13:21:42.6415538-06:00;False|2022-10-22T13:20:21.8569063-06:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApiAcademyApp.deps.json">
+      <publishTime>10/27/2022 14:23:38</publishTime>
+    </File>
+    <File Include="ApiAcademyApp.dll">
+      <publishTime>10/27/2022 14:23:38</publishTime>
+    </File>
+    <File Include="ApiAcademyApp.exe">
+      <publishTime>10/27/2022 14:23:38</publishTime>
+    </File>
+    <File Include="ApiAcademyApp.pdb">
+      <publishTime>10/27/2022 14:23:38</publishTime>
+    </File>
+    <File Include="ApiAcademyApp.runtimeconfig.json">
+      <publishTime>10/27/2022 13:04:48</publishTime>
+    </File>
+    <File Include="appsettings.Development.json">
+      <publishTime>10/27/2022 00:01:33</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>10/27/2022 00:01:33</publishTime>
+    </File>
+    <File Include="Microsoft.OpenApi.dll">
+      <publishTime>08/29/2020 14:14:12</publishTime>
+    </File>
+    <File Include="Newtonsoft.Json.dll">
+      <publishTime>03/17/2021 14:03:36</publishTime>
+    </File>
+    <File Include="runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll">
+      <publishTime>08/16/2021 13:22:22</publishTime>
+    </File>
+    <File Include="runtimes/win-arm64/native/sni.dll">
+      <publishTime>07/12/2017 05:24:24</publishTime>
+    </File>
+    <File Include="runtimes/win-x64/native/sni.dll">
+      <publishTime>07/12/2017 05:24:22</publishTime>
+    </File>
+    <File Include="runtimes/win-x86/native/sni.dll">
+      <publishTime>07/12/2017 05:24:22</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll">
+      <publishTime>08/16/2021 13:22:26</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.Swagger.dll">
+      <publishTime>10/16/2021 06:54:10</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.SwaggerGen.dll">
+      <publishTime>10/16/2021 06:54:36</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.SwaggerUI.dll">
+      <publishTime>10/16/2021 06:54:30</publishTime>
+    </File>
+    <File Include="System.Data.SqlClient.dll">
+      <publishTime>08/16/2021 13:14:56</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>10/27/2022 14:23:38</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,4 @@
+#Wed Oct 26 12:31:32 CST 2022
+base.0=C\:\\Users\\Jaca\\Desktop\\Proyectos\\AcademyApp\\Flutter\\acdemy\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
